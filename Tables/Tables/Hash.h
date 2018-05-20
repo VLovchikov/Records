@@ -40,7 +40,6 @@ public:
 			{
 				return t->str;
 			}
-
 			t = t->next;
 		}
 		throw - 1;
@@ -59,13 +58,23 @@ public:
 		{
 			if (t->next->key == k)
 			{
-				Node *tt = tt->next;
+				Node *tt = t->next;
 				t->next = t->next->next;
 				delete tt;
 			}
 			t = t->next;
 		}
 		throw - 2;;
+	}
+	bool search(int k)
+	{
+		Node *t = h;
+		while (t)
+		{
+			if (t->key = k) return true;
+			t = t->next;
+		}
+		return false;
 	}
 };
 
@@ -78,8 +87,11 @@ class Hash
 		return k%size;
 	}
 public:
-	Hash(int _N=10);
-
+	Hash();
+	Hash(int _N);
+	bool contain(int k);
+	void add(int k, string str);
+	void del(int k);
 	~Hash();
 };
 
