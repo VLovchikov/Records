@@ -22,17 +22,7 @@ int Viewed::getcount()
 	return cnt;
 }
 
-string & Viewed::getdata(int m)
-{
-	if (m >= cnt) throw - 4;
-	return mem[m-1]->str;
-}
 
-int Viewed::getkey(int m)
-{
-	if (m >= cnt) throw - 4;
-	return mem[m-1]->key;
-}
 
 void Viewed::add(int k, string s)
 {
@@ -43,7 +33,7 @@ void Viewed::add(int k, string s)
 	cnt++;
 }
 
-string & Viewed::search(int k)
+string & Viewed::get(int k)
 {
 	for (int i = 0; i < cnt; i++)
 	{
@@ -69,6 +59,11 @@ void Viewed::delRec(int k)
 		}
 	}
 	throw - 2;
+}
+
+int Viewed::geteq()
+{
+	return eq;
 }
 
 Viewed::~Viewed()

@@ -35,6 +35,18 @@ void Hash::del(int k)
 	a[g].del(k);
 }
 
+string Hash::get(int k)
+{
+	int g = hash(k);
+	return a[g].get(k);
+}
+
+int Hash::reteq(int k)
+{
+	int g = hash(k);
+	return a[g].reteq();
+}
+
 Hash::~Hash()
 {
 }

@@ -12,6 +12,7 @@ struct Node
 class List
 {
 	Node *h;
+	int eq;
 public:
 	List()
 	{
@@ -73,8 +74,13 @@ public:
 		{
 			if (t->key = k) return true;
 			t = t->next;
+			eq++;
 		}
 		return false;
+	}
+	int reteq()
+	{
+		return eq;
 	}
 };
 
@@ -92,6 +98,8 @@ public:
 	bool contain(int k);
 	void add(int k, string str);
 	void del(int k);
+	string get(int k);
+	int reteq(int k);
 	~Hash();
 };
 

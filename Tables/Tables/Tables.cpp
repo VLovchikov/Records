@@ -9,7 +9,12 @@
 
 int main()
 {
-	
+	Searching s;
+	s.insert(12, "sadfasdf");
+	s.insert(14, "sadfasdf");
+	s.insert(2, "sadfasdf");
+	s.insert(22, "sadfasdf");
+	s.insert(17, "sadfasdf");
     return 0;
 }
 
