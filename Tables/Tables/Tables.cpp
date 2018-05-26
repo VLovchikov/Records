@@ -15,6 +15,16 @@ int main()
 	s.insert(2, "sadfasdf");
 	s.insert(22, "sadfasdf");
 	s.insert(17, "sadfasdf");
+	s.insert(13, "sadfasdf");
+	s.insert(5, "sadfasdf");
+	s.insert(3, "sadfasdf");
+	s.insert(6, "sadfasdf");
+	s.insert(4, "sadfasdf");
+	s.insert(1, "sadfasdf");
+	s.del(5);
+	s.del(14);
+	Tree *j = s.geth();
+	s.print(j);
     return 0;
 }
 
