@@ -1,5 +1,9 @@
 ﻿  MyForm.cpp
-  .NETFramework,Version=v4.5.2.AssemblyAttributes.cpp
+a:\проекты\records\tables\tablesform\MyForm.h(273): warning C4244: аргумент: преобразование "wchar_t" в "char", возможна потеря данных
+a:\проекты\records\tables\tablesform\MyForm.h(277): warning C4244: аргумент: преобразование "wchar_t" в "char", возможна потеря данных
+a:\проекты\records\tables\tablesform\MyForm.h(290): warning C4244: аргумент: преобразование "wchar_t" в "char", возможна потеря данных
+a:\проекты\records\tables\tablesform\MyForm.h(294): warning C4244: аргумент: преобразование "wchar_t" в "char", возможна потеря данных
+a:\проекты\records\tables\tables\searching.cpp(138): warning C4715: Searching::get: значение возвращается не при всех путях выполнения
   MyForm.obj : /DEBUG:FASTLINK не поддерживается, если присутствует управляемый код; выполняется перезапуск компоновки с /DEBUG:FULL
   TablesForm.vcxproj -> A:\Проекты\Records\Tables\Debug\TablesForm.exe
   TablesForm.vcxproj -> A:\Проекты\Records\Tables\Debug\TablesForm.pdb (Partial PDB)

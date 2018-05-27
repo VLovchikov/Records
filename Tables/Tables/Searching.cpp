@@ -44,6 +44,7 @@ void Searching::insert(int key, string str)
 
 bool Searching::contain(int key)
 {
+	if (h == NULL) throw - 3;
 	Tree *t = h;
 	while (t)
 	{
@@ -126,6 +127,7 @@ void Searching::del(int key)
 
 string Searching::get(int key)
 {
+	if (!contain(key)) throw - 1;
 	Tree *t = h;
 	while (t)
 	{
