@@ -18,7 +18,7 @@ public:
 	void insert(int key, string str);
 	bool contain(int key);
 	void del(int key);
-	void remove(Tree *t,int key);
+	string get(int key);
 	Tree *max(Tree *t);
 	void print(Tree *hh);
 	~Searching();

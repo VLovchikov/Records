@@ -58,75 +58,91 @@ bool Searching::contain(int key)
 void Searching::del(int key)
 {
 	if (!contain(key)) throw - 1;
-	Tree *t = h;
-	st.push(t);
-	remove(t,key);
-	st.clean();
+	Tree *t, *tt, *e;
+	if (h->key == key)
+	{
+		t=max(h->l);
+		h->key = t->key;
+		h->str = t->str;
+		delete t;
+		return;
+	}
+	t = h;
+	tt = h;
+	while (t)
+	{
+		if (t->l)
+		{
+			if (t->l->key == key)
+			{
+				tt = t->l; break;
+			}
+		}
+		if (t->r)
+		{
+			if (t->r->key == key)
+			{
+				tt = t->r; break;
+			}
+		}
+		if (t->key > key) t = t->l;
+		else if (t->key < key) t = t->r;
+		
+	}
+	if (tt->r == NULL&&tt->l == NULL)
+	{
+		if (t->l == tt) t->l = NULL;
+		else t->r = NULL;
+		delete tt;
+		return;
+	}
+	if ((tt->r != NULL&&tt->l == NULL) || (tt->r == NULL&&tt->l != NULL))
+	{
+		if (tt->l != NULL)
+		{
+			if (t->l == tt) t->l = tt->l;
+			else t->r = tt->l;
+		}
+		if (tt->r != NULL)
+		{
+			if (t->l == tt) t->l = tt->r;
+			else t->r = tt->r;
+		}
+	}
+	if (tt->r != NULL&&tt->l != NULL)
+	{
+		e = max(tt->l);
+		tt->key = e->key;
+		tt->str = e->str;
+		if (tt->key == tt->l->key)
+		{
+			e = tt->l;
+			tt->l = NULL;
+			delete e;
+		}
+		return;
+	}
 }
 
-void Searching::remove(Tree * t,int key)
+string Searching::get(int key)
 {
-	if (t->key > key)
+	Tree *t = h;
+	while (t)
 	{
-		t = t->l;
-		st.push(t);
-		remove(t, key);
-		return;
-	}
-	if (t->key < key)
-	{
-		t = t->r;
-		st.push(t);
-		remove(t, key);
-		return;
-	}
-	if (t->key == key)
-	{
-		if ((t->l&&t->r) == NULL)
-		{
-			Tree *tt = st.pop();
-			tt->l = NULL;
-			tt->r = NULL;
-			delete t;
-			st.clean();
-			return;
-		}
-		if (t->r == NULL&&t->l != NULL)
-		{
-			Tree *tt = t->l;
-			t->l = NULL;
-			t->key = tt->key;
-			t->str = tt->str;
-			tt = NULL; delete tt;
-			st.clean();
-			return;
-		}
-		if (t->r != NULL&&t->l == NULL)
-		{
-			Tree *tt = t->r;
-			t->r = NULL;
-			t->key = tt->key;
-			t->str = tt->str;
-			tt = NULL;
-			delete tt;
-			st.clean();
-			return;
-		}
-		if (t->l != NULL&&t->r != NULL)
-		{
-			Tree *tt=max(t->l);
-			t->key = tt->key;
-			t->str = tt->str;
-			tt = NULL;
-			delete tt;
-			st.clean();
-			return;
-		}
+		if (t->key > key) t = t->l;
+		if (t->key < key)t = t->r;
+		if (t->key == key) return t->str;
 	}
 }
+
+
 
 Tree * Searching::max(Tree * t)
 {
+	if (t->l == NULL&&t->r == NULL)
+	{
+		return t;
+	}
 	while (t->r != NULL)
 	{
 		st.push(t);

@@ -145,6 +145,8 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\Polinom\Polinom\Polinom\MonomList.h" />
+    <ClInclude Include="..\..\..\Polinom\Polinom\Polinom\Polinom.h" />
     <ClInclude Include="Hash.h" />
     <ClInclude Include="Searching.h" />
     <ClInclude Include="Stack.h" />
@@ -153,6 +155,8 @@
     <ClInclude Include="Viewed.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\Polinom\Polinom\Polinom\MonomList.cpp" />
+    <ClCompile Include="..\..\..\Polinom\Polinom\Polinom\Polinom.cpp" />
     <ClCompile Include="Hash.cpp" />
     <ClCompile Include="Searching.cpp" />
     <ClCompile Include="Stack.cpp" />

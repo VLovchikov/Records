@@ -1,0 +1,5 @@
+﻿  MyForm.cpp
+  .NETFramework,Version=v4.5.2.AssemblyAttributes.cpp
+  MyForm.obj : /DEBUG:FASTLINK не поддерживается, если присутствует управляемый код; выполняется перезапуск компоновки с /DEBUG:FULL
+  TablesForm.vcxproj -> A:\Проекты\Records\Tables\Debug\TablesForm.exe
+  TablesForm.vcxproj -> A:\Проекты\Records\Tables\Debug\TablesForm.pdb (Partial PDB)
