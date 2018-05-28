@@ -22,6 +22,7 @@ public:
 	string& get(int k);
 	void delRec(int k);
 	int geteq();
+	Record * getRecord(int cnt);
 	~Viewed();
 };
 

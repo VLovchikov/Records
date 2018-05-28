@@ -9,6 +9,7 @@ class Searching
 {
 	Tree *h;
 	Stack st;
+	int eq;
 public:
 	Searching();
 	Tree *geth()
@@ -21,6 +22,8 @@ public:
 	string get(int key);
 	Tree *max(Tree *t);
 	void print(Tree *hh);
+	void fillst(Tree *h);
+	void cleanst();
 	~Searching();
 };
 

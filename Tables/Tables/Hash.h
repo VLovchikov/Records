@@ -16,7 +16,7 @@ class List
 public:
 	List()
 	{
-		h = NULL;
+		h = NULL; eq = 0;
 	}
 	bool isEmpty()
 	{
@@ -28,7 +28,7 @@ public:
 		t->key = k;
 		t->str = str;
 		t->next = NULL;
-		if (isEmpty()) h = t; return;
+		if (isEmpty()) { h = t; return; }
 		t->next = h;
 		h = t;
 	}
@@ -41,7 +41,7 @@ public:
 			{
 				return t->str;
 			}
-			t = t->next;
+			t = t->next; eq++;
 		}
 		throw - 1;
 	}
@@ -60,27 +60,31 @@ public:
 			if (t->next->key == k)
 			{
 				Node *tt = t->next;
-				t->next = t->next->next;
-				delete tt;
+				if(tt->next!=NULL) t->next = tt->next;
+				else t->next = NULL;
+				delete tt; return;
 			}
 			t = t->next;
 		}
-		throw - 2;;
+		throw - 2;
 	}
 	bool search(int k)
 	{
 		Node *t = h;
 		while (t)
 		{
-			if (t->key = k) return true;
+			if (t->key == k) return true;
 			t = t->next;
-			eq++;
 		}
 		return false;
 	}
 	int reteq()
 	{
 		return eq;
+	}
+	Node *gethead()
+	{
+		return h;
 	}
 };
 
@@ -92,6 +96,8 @@ class Hash
 	{
 		return k%size;
 	}
+	int eq;
+	int ch;
 public:
 	Hash();
 	Hash(int _N);
@@ -100,6 +106,9 @@ public:
 	void del(int k);
 	string get(int k);
 	int reteq(int k);
+	List getList(int k);
+	int getch();
+	int getsize();
 	~Hash();
 };
 

@@ -27,6 +27,16 @@ int Viewed::getcount()
 void Viewed::add(int k, string s)
 {
 	if (cnt >= size ) throw - 1;
+	if (cnt != 0)
+	{
+		for (int i = 0; i < cnt; i++)
+		{
+			if (mem[i]->key == k)
+			{
+				throw - 3;
+			}
+		}
+	}
 	mem[cnt] = new Record;
 	mem[cnt]->key = k;
 	mem[cnt]->str = s;
@@ -41,6 +51,7 @@ string & Viewed::get(int k)
 		{
 			return mem[i]->str;
 		}
+		eq++;
 	}
 	throw - 1;
 }
@@ -51,6 +62,10 @@ void Viewed::delRec(int k)
 	{
 		if (mem[i]->key == k)
 		{
+			if (i = cnt - 1)
+			{
+				delete mem[cnt - 1]; cnt--; return;
+			}
 			Record *t = mem[cnt-1];
 			mem[cnt - 1] = mem[i];
 			mem[i] = t;
@@ -64,6 +79,11 @@ void Viewed::delRec(int k)
 int Viewed::geteq()
 {
 	return eq;
+}
+
+Record * Viewed::getRecord(int ct)
+{
+	return mem[ct];
 }
 
 Viewed::~Viewed()

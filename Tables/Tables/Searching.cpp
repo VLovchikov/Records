@@ -121,6 +121,7 @@ void Searching::del(int key)
 			tt->l = NULL;
 			delete e;
 		}
+		st.clean();
 		return;
 	}
 }
@@ -131,8 +132,14 @@ string Searching::get(int key)
 	Tree *t = h;
 	while (t)
 	{
-		if (t->key > key) t = t->l;
-		if (t->key < key)t = t->r;
+		if (t->key > key)
+		{
+			t = t->l; eq++;
+		}
+		if (t->key < key)
+		{
+			t = t->r; eq++;
+		}
 		if (t->key == key) return t->str;
 	}
 }
@@ -171,6 +178,19 @@ void Searching::print(Tree * hh)
 	cout << hh->key << "  " << hh->str << endl;
 	print(hh->l);
 	print(hh->r);
+}
+
+void Searching::fillst(Tree *h)
+{
+	if (h == NULL) return;
+	st.push(h);
+	fillst(h->l);
+	fillst(h->r);
+}
+
+void Searching::cleanst()
+{
+	st.clean();
 }
 
 
