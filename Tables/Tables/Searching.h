@@ -24,6 +24,8 @@ public:
 	void print(Tree *hh);
 	void fillst(Tree *h);
 	void cleanst();
+	bool stIsEmpty();
+	Tree *popfromst();
 	~Searching();
 };
 

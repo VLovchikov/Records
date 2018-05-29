@@ -44,7 +44,7 @@ void Searching::insert(int key, string str)
 
 bool Searching::contain(int key)
 {
-	if (h == NULL) throw - 3;
+	if (h == NULL) return false;
 	Tree *t = h;
 	while (t)
 	{
@@ -62,6 +62,21 @@ void Searching::del(int key)
 	Tree *t, *tt, *e;
 	if (h->key == key)
 	{
+		if (h->l == NULL)
+		{
+			if (h->r == NULL)
+			{
+				h = NULL;
+				return;
+			}
+			else
+			{
+				t = h;
+				h = h->r;
+				delete t;
+				return;
+			}
+		}
 		t=max(h->l);
 		h->key = t->key;
 		h->str = t->str;
@@ -88,7 +103,6 @@ void Searching::del(int key)
 		}
 		if (t->key > key) t = t->l;
 		else if (t->key < key) t = t->r;
-		
 	}
 	if (tt->r == NULL&&tt->l == NULL)
 	{
@@ -191,6 +205,16 @@ void Searching::fillst(Tree *h)
 void Searching::cleanst()
 {
 	st.clean();
+}
+
+bool Searching::stIsEmpty()
+{
+	return st.isEmpty();
+}
+
+Tree * Searching::popfromst()
+{
+	return st.pop();
 }
 
 

@@ -7,11 +7,13 @@ Viewed::Viewed()
 	size = 20;
 	mem = new Record*[size];
 	for (int i = 0; i < size; i++) mem[i] = NULL;
+	cnt = 0;
 }
 
 
 Viewed::Viewed(int _size)
 {
+	cnt = 0;
 	size = _size;
 	mem = new Record*[size];
 	for (int i = 0; i < size; i++) mem[i] = NULL;
@@ -62,15 +64,11 @@ void Viewed::delRec(int k)
 	{
 		if (mem[i]->key == k)
 		{
-			if (i = cnt - 1)
-			{
-				delete mem[cnt - 1]; cnt--; return;
-			}
 			Record *t = mem[cnt-1];
 			mem[cnt - 1] = mem[i];
 			mem[i] = t;
-			cnt--;
-			delete mem[cnt - 1]; return;
+			t = NULL;
+			delete t; cnt--; return;
 		}
 	}
 	throw - 2;

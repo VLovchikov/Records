@@ -14,9 +14,9 @@
 Hash h;
 Viewed v;
 Searching s;
-Polinom p;
-std::string str1,str2;
+std::string str1, str2, outstr;
 int k;
+Polinom p1, p2;
 
 namespace TablesForm {
 
@@ -79,6 +79,11 @@ namespace TablesForm {
 	private: System::Windows::Forms::Button^  button3;
 	private: System::Windows::Forms::Button^  button4;
 	private: System::Windows::Forms::Button^  button5;
+	private: System::Windows::Forms::GroupBox^  groupBox3;
+	private: System::Windows::Forms::Label^  label3;
+	private: System::Windows::Forms::TextBox^  textBox4;
+	private: System::Windows::Forms::Label^  label4;
+	private: System::Windows::Forms::Label^  label5;
 
 	private:
 		/// <summary>
@@ -119,11 +124,17 @@ namespace TablesForm {
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->button5 = (gcnew System::Windows::Forms::Button());
+			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
+			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->label5 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView3))->BeginInit();
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
+			this->groupBox3->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// dataGridView1
@@ -207,11 +218,11 @@ namespace TablesForm {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Times New Roman", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label1->Location = System::Drawing::Point(9, 417);
+			this->label1->Location = System::Drawing::Point(11, 439);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(77, 15);
+			this->label1->Size = System::Drawing::Size(32, 15);
 			this->label1->TabIndex = 4;
-			this->label1->Text = L"Добавление ";
+			this->label1->Text = L"Key:";
 			// 
 			// radioButton1
 			// 
@@ -230,6 +241,7 @@ namespace TablesForm {
 			this->groupBox1->Controls->Add(this->button1);
 			this->groupBox1->Font = (gcnew System::Drawing::Font(L"Times New Roman", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
+			this->groupBox1->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
 			this->groupBox1->Location = System::Drawing::Point(234, 417);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->Size = System::Drawing::Size(96, 101);
@@ -250,14 +262,14 @@ namespace TablesForm {
 			// 
 			// textBox1
 			// 
-			this->textBox1->Location = System::Drawing::Point(12, 468);
+			this->textBox1->Location = System::Drawing::Point(51, 436);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(31, 20);
 			this->textBox1->TabIndex = 7;
 			// 
 			// textBox2
 			// 
-			this->textBox2->Location = System::Drawing::Point(51, 468);
+			this->textBox2->Location = System::Drawing::Point(51, 467);
 			this->textBox2->Name = L"textBox2";
 			this->textBox2->Size = System::Drawing::Size(177, 20);
 			this->textBox2->TabIndex = 8;
@@ -276,7 +288,7 @@ namespace TablesForm {
 			this->groupBox2->Size = System::Drawing::Size(170, 125);
 			this->groupBox2->TabIndex = 9;
 			this->groupBox2->TabStop = false;
-			this->groupBox2->Text = L"Удаление";
+			this->groupBox2->Text = L"Delete";
 			// 
 			// button2
 			// 
@@ -335,42 +347,101 @@ namespace TablesForm {
 				static_cast<System::Byte>(204)));
 			this->label2->Location = System::Drawing::Point(12, 528);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(70, 15);
+			this->label2->Size = System::Drawing::Size(68, 15);
 			this->label2->TabIndex = 10;
-			this->label2->Text = L"Операции: ";
+			this->label2->Text = L"Operations";
 			// 
 			// button3
 			// 
-			this->button3->Location = System::Drawing::Point(13, 558);
+			this->button3->Location = System::Drawing::Point(13, 590);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(75, 23);
 			this->button3->TabIndex = 11;
 			this->button3->Text = L"Addition";
 			this->button3->UseVisualStyleBackColor = true;
+			this->button3->Click += gcnew System::EventHandler(this, &MyForm::button3_Click);
 			// 
 			// button4
 			// 
-			this->button4->Location = System::Drawing::Point(95, 558);
+			this->button4->Location = System::Drawing::Point(94, 590);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(75, 23);
 			this->button4->TabIndex = 12;
 			this->button4->Text = L"Substraction";
 			this->button4->UseVisualStyleBackColor = true;
+			this->button4->Click += gcnew System::EventHandler(this, &MyForm::button4_Click);
 			// 
 			// button5
 			// 
-			this->button5->Location = System::Drawing::Point(177, 558);
+			this->button5->Location = System::Drawing::Point(177, 590);
 			this->button5->Name = L"button5";
 			this->button5->Size = System::Drawing::Size(82, 23);
 			this->button5->TabIndex = 13;
 			this->button5->Text = L"Multiplication";
 			this->button5->UseVisualStyleBackColor = true;
+			this->button5->Click += gcnew System::EventHandler(this, &MyForm::button5_Click);
+			// 
+			// groupBox3
+			// 
+			this->groupBox3->BackColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->groupBox3->Controls->Add(this->label3);
+			this->groupBox3->Font = (gcnew System::Drawing::Font(L"Times New Roman", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->groupBox3->Location = System::Drawing::Point(265, 576);
+			this->groupBox3->Name = L"groupBox3";
+			this->groupBox3->Size = System::Drawing::Size(200, 37);
+			this->groupBox3->TabIndex = 14;
+			this->groupBox3->TabStop = false;
+			this->groupBox3->Text = L"Error output:";
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->BackColor = System::Drawing::SystemColors::ControlLightLight;
+			this->label3->Location = System::Drawing::Point(11, 18);
+			this->label3->MinimumSize = System::Drawing::Size(140, 15);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(140, 15);
+			this->label3->TabIndex = 0;
+			// 
+			// textBox4
+			// 
+			this->textBox4->Location = System::Drawing::Point(51, 556);
+			this->textBox4->Name = L"textBox4";
+			this->textBox4->Size = System::Drawing::Size(39, 20);
+			this->textBox4->TabIndex = 15;
+			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->Font = (gcnew System::Drawing::Font(L"Times New Roman", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label4->Location = System::Drawing::Point(13, 558);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(32, 15);
+			this->label4->TabIndex = 16;
+			this->label4->Text = L"Key:";
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Font = (gcnew System::Drawing::Font(L"Times New Roman", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label5->Location = System::Drawing::Point(11, 469);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(29, 15);
+			this->label5->TabIndex = 17;
+			this->label5->Text = L"Pol:";
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(700, 610);
+			this->ClientSize = System::Drawing::Size(700, 634);
+			this->Controls->Add(this->label5);
+			this->Controls->Add(this->label4);
+			this->Controls->Add(this->textBox4);
+			this->Controls->Add(this->groupBox3);
 			this->Controls->Add(this->button5);
 			this->Controls->Add(this->button4);
 			this->Controls->Add(this->button3);
@@ -392,6 +463,8 @@ namespace TablesForm {
 			this->groupBox1->PerformLayout();
 			this->groupBox2->ResumeLayout(false);
 			this->groupBox2->PerformLayout();
+			this->groupBox3->ResumeLayout(false);
+			this->groupBox3->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -512,9 +585,158 @@ namespace TablesForm {
 		}
 		if (radioButton5->Checked == 1)
 		{
-
+			s.cleanst();
+			dataGridView3->Rows->Clear();
+			int l = textBox3->Text->Length;
+			string ss;
+			ss.resize(l);
+			for (int i = 0; i < l; i++)
+			{
+				ss[i] = textBox3->Text[i];
+			}
+			int k = atoi(ss.c_str());
+			ss = "";
+			s.del(k);
+			s.fillst(s.geth());
+			while (!s.stIsEmpty())
+			{
+				Tree *t = s.popfromst();
+				dataGridView3->Rows->Add(t->key, gcnew String(t->str.c_str()));
+			}
 		}
-
+}
+private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
+	dataGridView3->Rows->Clear();
+	int l = textBox4->Text->Length;
+	string ss;
+	ss.resize(l);
+	for (int i = 0; i < l; i++)
+	{
+		ss[i] = textBox4->Text[i];
+	}
+	int k = atoi(ss.c_str());
+	ss = "";
+	int l1=dataGridView1->CurrentRow->Index;
+	String^ s1=dataGridView1->Rows[l1]->Cells[1]->Value->ToString();
+	int l2 = dataGridView1->CurrentRow->Index;
+	String^ s2 = dataGridView2->Rows[l2]->Cells[1]->Value->ToString();
+	l1 = s1->Length;
+	l2 = s2->Length;
+	str1.resize(l1);
+	str2.resize(l2);
+	for (int i = 0; i < l1; i++)
+	{
+		str1[i] = s1[i];
+	}
+	for (int i = 0; i < l2; i++)
+	{
+		str2[i] = s2[i];
+	}
+	p1.add(str1);
+	p2.add(str2);
+	p1 + p2;
+	outstr = p1.ReverseConvert();
+	s.insert(k, outstr);
+	s.fillst(s.geth());
+	while (!s.stIsEmpty())
+	{
+		Tree *t = s.popfromst();
+		dataGridView3->Rows->Add(t->key, gcnew String(t->str.c_str()));
+	}
+	str1 = "";
+	str2 = "";
+	k = 0;
+	p1.a.clean();
+	p2.a.clean();
+	
+}
+private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
+	dataGridView3->Rows->Clear();
+	int l = textBox4->Text->Length;
+	string ss;
+	ss.resize(l);
+	for (int i = 0; i < l; i++)
+	{
+		ss[i] = textBox4->Text[i];
+	}
+	int k = atoi(ss.c_str());
+	ss = "";
+	int l1 = dataGridView1->CurrentRow->Index;
+	String^ s1 = dataGridView1->Rows[l1]->Cells[1]->Value->ToString();
+	int l2 = dataGridView1->CurrentRow->Index;
+	String^ s2 = dataGridView2->Rows[l2]->Cells[1]->Value->ToString();
+	l1 = s1->Length;
+	l2 = s2->Length;
+	str1.resize(l1);
+	str2.resize(l2);
+	for (int i = 0; i < l1; i++)
+	{
+		str1[i] = s1[i];
+	}
+	for (int i = 0; i < l2; i++)
+	{
+		str2[i] = s2[i];
+	}
+	p1.add(str1);
+	p2.add(str2);
+	p1 - p2;
+	outstr = p1.ReverseConvert();
+	s.insert(k, outstr);
+	s.fillst(s.geth());
+	while (!s.stIsEmpty())
+	{
+		Tree *t = s.popfromst();
+		dataGridView3->Rows->Add(t->key, gcnew String(t->str.c_str()));
+	}
+	str1 = "";
+	str2 = "";
+	k = 0;
+	p1.a.clean();
+	p2.a.clean();
+}
+private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e) {
+	dataGridView3->Rows->Clear();
+	int l = textBox4->Text->Length;
+	string ss;
+	ss.resize(l);
+	for (int i = 0; i < l; i++)
+	{
+		ss[i] = textBox4->Text[i];
+	}
+	int k = atoi(ss.c_str());
+	ss = "";
+	int l1 = dataGridView1->CurrentRow->Index;
+	String^ s1 = dataGridView1->Rows[l1]->Cells[1]->Value->ToString();
+	int l2 = dataGridView1->CurrentRow->Index;
+	String^ s2 = dataGridView2->Rows[l2]->Cells[1]->Value->ToString();
+	l1 = s1->Length;
+	l2 = s2->Length;
+	str1.resize(l1);
+	str2.resize(l2);
+	for (int i = 0; i < l1; i++)
+	{
+		str1[i] = s1[i];
+	}
+	for (int i = 0; i < l2; i++)
+	{
+		str2[i] = s2[i];
+	}
+	p1.add(str1);
+	p2.add(str2);
+	p1 * p2;
+	outstr = p1.ReverseConvert();
+	s.insert(k, outstr);
+	s.fillst(s.geth());
+	while (!s.stIsEmpty())
+	{
+		Tree *t = s.popfromst();
+		dataGridView3->Rows->Add(t->key, gcnew String(t->str.c_str()));
+	}
+	str1 = "";
+	str2 = "";
+	k = 0;
+	p1.a.clean();
+	p2.a.clean();
 }
 };
 }
