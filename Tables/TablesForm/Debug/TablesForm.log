@@ -1,21 +1,21 @@
 ﻿  MyForm.cpp
-a:\проекты\records\tables\tablesform\MyForm.h(482): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
-a:\проекты\records\tables\tablesform\MyForm.h(486): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
-a:\проекты\records\tables\tablesform\MyForm.h(518): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
-a:\проекты\records\tables\tablesform\MyForm.h(522): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
-a:\проекты\records\tables\tablesform\MyForm.h(542): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
-a:\проекты\records\tables\tablesform\MyForm.h(575): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
-a:\проекты\records\tables\tablesform\MyForm.h(595): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
-a:\проекты\records\tables\tablesform\MyForm.h(615): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
-a:\проекты\records\tables\tablesform\MyForm.h(629): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
-a:\проекты\records\tables\tablesform\MyForm.h(633): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
-a:\проекты\records\tables\tablesform\MyForm.h(660): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
-a:\проекты\records\tables\tablesform\MyForm.h(674): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
+a:\проекты\records\tables\tablesform\MyForm.h(483): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
+a:\проекты\records\tables\tablesform\MyForm.h(487): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
+a:\проекты\records\tables\tablesform\MyForm.h(528): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
+a:\проекты\records\tables\tablesform\MyForm.h(532): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
+a:\проекты\records\tables\tablesform\MyForm.h(562): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
+a:\проекты\records\tables\tablesform\MyForm.h(605): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
+a:\проекты\records\tables\tablesform\MyForm.h(634): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
+a:\проекты\records\tables\tablesform\MyForm.h(664): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
 a:\проекты\records\tables\tablesform\MyForm.h(678): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
-a:\проекты\records\tables\tablesform\MyForm.h(704): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
-a:\проекты\records\tables\tablesform\MyForm.h(718): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
-a:\проекты\records\tables\tablesform\MyForm.h(722): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
-a:\проекты\records\tables\tables\searching.cpp(159): warning C4715: Searching::get: значение возвращается не при всех путях выполнения
+a:\проекты\records\tables\tablesform\MyForm.h(682): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
+a:\проекты\records\tables\tablesform\MyForm.h(719): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
+a:\проекты\records\tables\tablesform\MyForm.h(733): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
+a:\проекты\records\tables\tablesform\MyForm.h(737): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
+a:\проекты\records\tables\tablesform\MyForm.h(773): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
+a:\проекты\records\tables\tablesform\MyForm.h(787): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
+a:\проекты\records\tables\tablesform\MyForm.h(791): warning C4244: =: преобразование "wchar_t" в "char", возможна потеря данных
+a:\проекты\records\tables\tables\searching.cpp(164): warning C4715: Searching::get: значение возвращается не при всех путях выполнения
   MyForm.obj : /DEBUG:FASTLINK не поддерживается, если присутствует управляемый код; выполняется перезапуск компоновки с /DEBUG:FULL
   TablesForm.vcxproj -> A:\Проекты\Records\Tables\Debug\TablesForm.exe
   TablesForm.vcxproj -> A:\Проекты\Records\Tables\Debug\TablesForm.pdb (Partial PDB)

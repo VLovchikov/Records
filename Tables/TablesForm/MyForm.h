@@ -389,7 +389,7 @@ namespace TablesForm {
 				static_cast<System::Byte>(204)));
 			this->groupBox3->Location = System::Drawing::Point(265, 576);
 			this->groupBox3->Name = L"groupBox3";
-			this->groupBox3->Size = System::Drawing::Size(200, 37);
+			this->groupBox3->Size = System::Drawing::Size(254, 37);
 			this->groupBox3->TabIndex = 14;
 			this->groupBox3->TabStop = false;
 			this->groupBox3->Text = L"Error output:";
@@ -399,9 +399,9 @@ namespace TablesForm {
 			this->label3->AutoSize = true;
 			this->label3->BackColor = System::Drawing::SystemColors::ControlLightLight;
 			this->label3->Location = System::Drawing::Point(11, 18);
-			this->label3->MinimumSize = System::Drawing::Size(140, 15);
+			this->label3->MinimumSize = System::Drawing::Size(220, 15);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(140, 15);
+			this->label3->Size = System::Drawing::Size(220, 15);
 			this->label3->TabIndex = 0;
 			// 
 			// textBox4
@@ -471,6 +471,7 @@ namespace TablesForm {
 		}
 #pragma endregion
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+		label3->Text = gcnew String(" ");
 		if (radioButton1->Checked == 1)
 		{
 			int l1 = textBox1->Text->Length;
@@ -486,7 +487,16 @@ namespace TablesForm {
 				str2[i]= textBox2->Text[i];
 			}
 			k = atoi(str1.c_str());
-			h.add(k,str2);
+			try
+			{
+				h.add(k, str2);
+			}
+			catch (...)
+			{
+				string h = "Can`t add with this key in first table!";
+				label3->Text = gcnew String(h.c_str());
+				return;
+			}
 			str1 = "";
 			str2 = "";
 			int i = 0;
@@ -522,7 +532,16 @@ namespace TablesForm {
 				str2 [i]= textBox2->Text[i];
 			}
 			k = atoi(str1.c_str());
-			v.add(k, str2);
+			try
+			{
+				v.add(k, str2);
+			}
+			catch (...)
+			{
+				string h = "Can`t add with this key in second table!";
+				label3->Text = gcnew String(h.c_str());
+				return;
+			}
 			str1 = "";
 			str2 = "";
 			dataGridView2->Rows->Clear();
@@ -534,6 +553,7 @@ namespace TablesForm {
 		}
 	}
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
+		label3->Text = gcnew String(" ");
 		int l = textBox3->Text->Length;
 		string ss;
 		ss.resize(l);
@@ -545,9 +565,19 @@ namespace TablesForm {
 		ss = "";
 		if (radioButton3->Checked == 1)
 		{
-			dataGridView1->Rows->Clear();
+			
 			int i = 0;
-			h.del(k);
+			try
+			{
+				h.del(k);
+			}
+			catch (...)
+			{
+				string h = "Can`t del with this key in first table!";
+				label3->Text = gcnew String(h.c_str());
+				return;
+			}
+			dataGridView1->Rows->Clear();
 			while (i != h.getsize())
 			{
 				List a = h.getList(i);
@@ -566,7 +596,7 @@ namespace TablesForm {
 		}
 		if (radioButton4->Checked == 1)
 		{
-			dataGridView2->Rows->Clear();
+			
 			int l = textBox3->Text->Length;
 			string ss;
 			ss.resize(l);
@@ -576,7 +606,17 @@ namespace TablesForm {
 			}
 			int k = atoi(ss.c_str());
 			ss = "";
-			v.delRec(k);
+			try
+			{
+				v.delRec(k);
+			}
+			catch(...)
+			{
+				string h = "Can`t del with this key in second table!";
+				label3->Text = gcnew String(h.c_str());
+				return;
+			}
+			dataGridView2->Rows->Clear();
 			for (int i = 0; i < v.getcount(); i++)
 			{
 				Record *t = v.getRecord(i);
@@ -586,7 +626,6 @@ namespace TablesForm {
 		if (radioButton5->Checked == 1)
 		{
 			s.cleanst();
-			dataGridView3->Rows->Clear();
 			int l = textBox3->Text->Length;
 			string ss;
 			ss.resize(l);
@@ -596,7 +635,17 @@ namespace TablesForm {
 			}
 			int k = atoi(ss.c_str());
 			ss = "";
-			s.del(k);
+			try
+			{
+				s.del(k);
+			}
+			catch (...)
+			{
+				string h = "Can`t del with this key in third table!";
+				label3->Text = gcnew String(h.c_str());
+				return;
+			}
+			dataGridView3->Rows->Clear();
 			s.fillst(s.geth());
 			while (!s.stIsEmpty())
 			{
@@ -606,7 +655,7 @@ namespace TablesForm {
 		}
 }
 private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
-	dataGridView3->Rows->Clear();
+	label3->Text = gcnew String(" ");
 	int l = textBox4->Text->Length;
 	string ss;
 	ss.resize(l);
@@ -636,22 +685,31 @@ private: System::Void button3_Click(System::Object^  sender, System::EventArgs^ 
 	p2.add(str2);
 	p1 + p2;
 	outstr = p1.ReverseConvert();
-	s.insert(k, outstr);
+	str1 = "";
+	str2 = "";
+	k = 0;
+	p1.a.clean();
+	p2.a.clean();
+	try
+	{
+		s.insert(k, outstr);
+	}
+	catch (...)
+	{
+		string h = "Invalid Key in third table";
+		label3->Text = gcnew String(h.c_str());
+		return;
+	}
+	dataGridView3->Rows->Clear();
 	s.fillst(s.geth());
 	while (!s.stIsEmpty())
 	{
 		Tree *t = s.popfromst();
 		dataGridView3->Rows->Add(t->key, gcnew String(t->str.c_str()));
 	}
-	str1 = "";
-	str2 = "";
-	k = 0;
-	p1.a.clean();
-	p2.a.clean();
-	
 }
 private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
-	dataGridView3->Rows->Clear();
+	label3->Text = gcnew String(" ");
 	int l = textBox4->Text->Length;
 	string ss;
 	ss.resize(l);
@@ -681,7 +739,17 @@ private: System::Void button4_Click(System::Object^  sender, System::EventArgs^ 
 	p2.add(str2);
 	p1 - p2;
 	outstr = p1.ReverseConvert();
-	s.insert(k, outstr);
+	try
+	{
+		s.insert(k, outstr);
+	}
+	catch (...)
+	{
+		string h = "Invalid Key in third table";
+		label3->Text = gcnew String(h.c_str());
+		return;
+	}
+	dataGridView3->Rows->Clear();
 	s.fillst(s.geth());
 	while (!s.stIsEmpty())
 	{
@@ -695,7 +763,7 @@ private: System::Void button4_Click(System::Object^  sender, System::EventArgs^ 
 	p2.a.clean();
 }
 private: System::Void button5_Click(System::Object^  sender, System::EventArgs^  e) {
-	dataGridView3->Rows->Clear();
+	label3->Text = gcnew String(" ");
 	int l = textBox4->Text->Length;
 	string ss;
 	ss.resize(l);
@@ -725,7 +793,17 @@ private: System::Void button5_Click(System::Object^  sender, System::EventArgs^ 
 	p2.add(str2);
 	p1 * p2;
 	outstr = p1.ReverseConvert();
-	s.insert(k, outstr);
+	try
+	{
+		s.insert(k, outstr);
+	}
+	catch (...)
+	{
+		string h = "Invalid Key in third table";
+		label3->Text = gcnew String(h.c_str());
+		return;
+	}
+	dataGridView3->Rows->Clear();
 	s.fillst(s.geth());
 	while (!s.stIsEmpty())
 	{

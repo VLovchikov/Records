@@ -21,6 +21,7 @@ int main()
 	s.insert(6, "sadfasdf");
 	s.insert(4, "sadfasdf");
 	s.insert(1, "sadfasdf");
+	s.del(14);
 	s.del(2);
 	Tree *j = s.geth();
 	s.print(j);

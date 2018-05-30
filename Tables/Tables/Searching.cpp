@@ -80,6 +80,11 @@ void Searching::del(int key)
 		t=max(h->l);
 		h->key = t->key;
 		h->str = t->str;
+		if (t = h->l)
+		{
+			if (t->l == NULL) h->l = NULL;
+		}
+		t = NULL;
 		delete t;
 		return;
 	}
